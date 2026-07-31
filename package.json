@@ -4,6 +4,7 @@
   "private": true,
   "description": "Landing page estatica para CRIDALVID, lista para GitHub y Vercel.",
   "scripts": {
+    "validate": "node scripts/validate-site.mjs",
     "start": "python -m http.server 5500",
     "serve": "python -m http.server 5500"
   }

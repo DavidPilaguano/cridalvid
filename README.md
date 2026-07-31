@@ -69,6 +69,34 @@ README.md
 6. Output directory: dejar vacio.
 7. Deploy.
 
+## CI/CD con GitHub Actions y Vercel
+
+El repo incluye tres workflows:
+
+- `.github/workflows/ci.yml`: valida el sitio en cada push y pull request.
+- `.github/workflows/vercel-preview.yml`: despliega previews en Vercel para pull requests.
+- `.github/workflows/vercel-production.yml`: despliega produccion en Vercel cuando se hace push a `main`.
+
+Para que el despliegue automatico funcione, agrega estos secrets en GitHub:
+
+```text
+VERCEL_TOKEN
+VERCEL_ORG_ID
+VERCEL_PROJECT_ID
+```
+
+Como obtenerlos:
+
+1. `VERCEL_TOKEN`: en Vercel, ve a Account Settings > Tokens y crea un token.
+2. `VERCEL_ORG_ID` y `VERCEL_PROJECT_ID`: ejecuta `vercel link` en el proyecto o revisa `.vercel/project.json` despues de enlazarlo localmente.
+3. En GitHub, ve a Settings > Secrets and variables > Actions > New repository secret.
+
+Validacion local:
+
+```bash
+npm run validate
+```
+
 ## Datos que debes reemplazar
 
 Busca y reemplaza estos marcadores:
