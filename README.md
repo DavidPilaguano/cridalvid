@@ -5,9 +5,12 @@ Landing page estatica completa para CRIDALVID, lista para subir a GitHub y despl
 ## Archivos principales
 
 - `index.html`: estructura completa de la pagina.
-- `styles.css`: diseno visual responsive.
-- `script.js`: menu movil, galeria, formularios y WhatsApp.
-- `assets/`: favicon, logo y grafica social.
+- `src/css/main.css`: diseno visual responsive.
+- `src/js/config.js`: datos editables del negocio.
+- `src/js/data.js`: servicios y galeria de proyectos.
+- `src/js/main.js`: menu movil, galeria, formularios y WhatsApp.
+- `assets/brand/`: favicon, logo y grafica social.
+- `assets/projects/`: fotos y video reales del negocio.
 - `vercel.json`: configuracion recomendada para Vercel.
 - `robots.txt` y `sitemap.xml`: SEO basico.
 - `site.webmanifest`: datos para navegador y acceso directo.
@@ -36,8 +39,7 @@ Sube todo el contenido de esta carpeta como raiz del repositorio:
 
 ```text
 index.html
-styles.css
-script.js
+src/
 assets/
 vercel.json
 robots.txt
@@ -71,7 +73,7 @@ Busca y reemplaza estos marcadores:
 - `[ANOS]`
 - `[CANTIDAD]`
 
-En `script.js`, cambia:
+En `src/js/config.js`, cambia:
 
 ```js
 whatsapp: "[NUMERO]"

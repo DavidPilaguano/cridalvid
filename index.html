@@ -16,17 +16,17 @@
       content="Soluciones en aluminio y vidrio para ventanas, puertas, mamparas, fachadas, vitrinas y proyectos a medida."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/og-image.svg" />
+    <meta property="og:image" content="assets/brand/og-image.svg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="CRIDALVID | Aluminio y vidrio a medida" />
     <meta
       name="twitter:description"
       content="Cotiza trabajos de aluminio y vidrio a medida para viviendas, locales y proyectos."
     />
-    <meta name="twitter:image" content="assets/og-image.svg" />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <meta name="twitter:image" content="assets/brand/og-image.svg" />
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="site.webmanifest" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="src/css/main.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -109,19 +109,9 @@
         <div class="section-head">
           <p class="eyebrow">Galeria</p>
           <h2>Espacio preparado para proyectos reales</h2>
-          <p>
-            La galeria esta lista para cargar fotografias reales de CRIDALVID. Por ahora se muestran marcadores para
-            no presentar imagenes genericas como trabajos propios.
-          </p>
+          <p>Galeria organizada con las fotos y video del negocio que ya estan en el proyecto.</p>
         </div>
-        <div class="project-grid">
-          <button class="project-tile" data-project="Ventanas residenciales"><span class="project-frame"></span><strong>Ventanas residenciales</strong><small>Imagen real pendiente</small></button>
-          <button class="project-tile" data-project="Vitrina comercial"><span class="project-frame"></span><strong>Vitrina comercial</strong><small>Imagen real pendiente</small></button>
-          <button class="project-tile" data-project="Division de bano"><span class="project-frame"></span><strong>Division de bano</strong><small>Imagen real pendiente</small></button>
-          <button class="project-tile" data-project="Baranda en vidrio"><span class="project-frame"></span><strong>Baranda en vidrio</strong><small>Imagen real pendiente</small></button>
-          <button class="project-tile" data-project="Puerta corrediza"><span class="project-frame"></span><strong>Puerta corrediza</strong><small>Imagen real pendiente</small></button>
-          <button class="project-tile" data-project="Mampara interior"><span class="project-frame"></span><strong>Mampara interior</strong><small>Imagen real pendiente</small></button>
-        </div>
+        <div class="project-grid" id="project-grid"></div>
       </section>
 
       <section class="section process">
@@ -169,7 +159,7 @@
           <article>
             <strong>Nombre del cliente</strong>
             <span>Tipo de proyecto</span>
-            <p>Comentario real pendiente. Evita publicar calificaciones o reseñas que no sean reales.</p>
+            <p>Comentario real pendiente. Evita publicar calificaciones o resenas que no sean reales.</p>
           </article>
         </div>
       </section>
@@ -201,12 +191,12 @@
           <p class="eyebrow">Ubicacion y contacto</p>
           <h2>Estamos listos para revisar tu proyecto</h2>
           <dl>
-            <div><dt>Direccion</dt><dd>[CIUDAD Y DIRECCION]</dd></div>
-            <div><dt>Horario</dt><dd>[HORARIO]</dd></div>
-            <div><dt>Telefono</dt><dd>[NUMERO]</dd></div>
-            <div><dt>WhatsApp</dt><dd>[NUMERO]</dd></div>
-            <div><dt>Correo</dt><dd>[CORREO]</dd></div>
-            <div><dt>Cobertura</dt><dd>[ZONAS]</dd></div>
+            <div><dt>Direccion</dt><dd data-business-address>[CIUDAD Y DIRECCION]</dd></div>
+            <div><dt>Horario</dt><dd data-business-schedule>[HORARIO]</dd></div>
+            <div><dt>Telefono</dt><dd data-business-phone>[NUMERO]</dd></div>
+            <div><dt>WhatsApp</dt><dd data-business-phone>[NUMERO]</dd></div>
+            <div><dt>Correo</dt><dd data-business-email>[CORREO]</dd></div>
+            <div><dt>Cobertura</dt><dd data-business-coverage>[ZONAS]</dd></div>
           </dl>
           <div class="contact-actions">
             <a class="button primary js-whatsapp" href="#">Escribir por WhatsApp</a>
@@ -253,7 +243,7 @@
     </main>
 
     <footer class="footer">
-      <div><strong>CRIDALVID</strong><p>Soluciones en aluminio y vidrio para proyectos a medida en [CIUDAD].</p></div>
+      <div><strong>CRIDALVID</strong><p>Soluciones en aluminio y vidrio para proyectos a medida en <span data-business-city>[CIUDAD]</span>.</p></div>
       <div><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#nosotros">Nosotros</a><a href="#trabaja-con-nosotros">Trabaja con nosotros</a></div>
       <div><a href="[ENLACE]">Instagram</a><a href="[ENLACE]">Facebook</a><a href="mailto:[CORREO]">Correo</a><a href="#privacidad">Politica de privacidad</a></div>
       <small>Copyright <span id="year"></span> CRIDALVID. Todos los derechos reservados.</small>
@@ -264,14 +254,16 @@
     <div class="modal" id="project-modal" hidden>
       <div class="modal-content" role="dialog" aria-modal="true">
         <button class="modal-close" type="button" aria-label="Cerrar">x</button>
-        <span class="project-frame large"></span>
+        <div class="modal-media" id="modal-media"></div>
         <h3 id="modal-title">Proyecto</h3>
         <p>Espacio reservado para una fotografia real, descripcion del trabajo y ubicacion del proyecto.</p>
         <a class="button primary" id="modal-whatsapp" href="#">Quiero un proyecto similar</a>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="src/js/config.js"></script>
+    <script src="src/js/data.js"></script>
+    <script src="src/js/main.js"></script>
     <noscript>Activa JavaScript para usar el menu movil, la galeria y los formularios de WhatsApp.</noscript>
   </body>
 </html>

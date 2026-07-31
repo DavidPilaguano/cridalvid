@@ -1,21 +1,6 @@
-const business = {
-  name: "CRIDALVID",
-  whatsapp: "[NUMERO]",
-  email: "[CORREO]",
-  city: "[CIUDAD]",
-  address: "[CIUDAD Y DIRECCION]"
-};
-
-const services = [
-  ["Ventanas de aluminio", "Sistemas corredizos, abatibles o fijos fabricados a medida para viviendas y proyectos.", "Mayor entrada de luz, ventilacion y buen sellado."],
-  ["Puertas de aluminio y vidrio", "Puertas resistentes y modernas para interiores, exteriores y locales comerciales.", "Accesos seguros con acabado limpio y duradero."],
-  ["Mamparas y divisiones", "Soluciones para separar ambientes sin perder amplitud visual ni luminosidad.", "Espacios mas ordenados, funcionales y elegantes."],
-  ["Divisiones de bano", "Mamparas para ducha y bano con vidrio a medida y herrajes adecuados al espacio.", "Banos mas practicos, modernos y faciles de mantener."],
-  ["Fachadas y vitrinas comerciales", "Frentes en aluminio y vidrio pensados para negocios, exhibicion y alto transito.", "Una primera impresion profesional para tus clientes."],
-  ["Barandas y pasamanos", "Elementos de seguridad con vidrio y aluminio para escaleras, balcones y terrazas.", "Proteccion con una presencia visual ligera."],
-  ["Espejos", "Espejos decorativos y funcionales cortados segun las medidas del proyecto.", "Ambientes mas amplios, luminosos y bien terminados."],
-  ["Vidrio a medida", "Cortes e instalaciones para mesas, divisiones, repisas y soluciones especiales.", "Piezas precisas para resolver necesidades puntuales."]
-];
+const { business } = window.CRIDA_CONFIG;
+const services = window.CRIDA_SERVICES;
+const projects = window.CRIDA_PROJECTS;
 
 function whatsappUrl(message) {
   const number = business.whatsapp.replace(/\D/g, "");
@@ -27,7 +12,19 @@ function isPlaceholder(value) {
   return !value || /^\[.+\]$/.test(String(value).trim());
 }
 
+function setText(selector, value) {
+  document.querySelectorAll(selector).forEach((node) => {
+    node.textContent = value;
+  });
+}
+
 document.getElementById("year").textContent = new Date().getFullYear();
+setText("[data-business-city]", business.city);
+setText("[data-business-address]", business.address);
+setText("[data-business-phone]", business.whatsapp);
+setText("[data-business-email]", business.email);
+setText("[data-business-schedule]", business.schedule);
+setText("[data-business-coverage]", business.coverage);
 
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.getElementById("site-nav");
@@ -46,21 +43,21 @@ const serviceGrid = document.getElementById("services-grid");
 const serviceSelect = document.getElementById("service-select");
 serviceSelect.innerHTML = '<option value="">Selecciona una opcion</option>';
 
-services.forEach(([name, description, benefit], index) => {
+services.forEach((service, index) => {
   const article = document.createElement("article");
   article.className = "service-card";
   article.innerHTML = `
     <div class="service-visual visual-${(index % 4) + 1}" aria-hidden="true"></div>
-    <h3>${name}</h3>
-    <p>${description}</p>
-    <strong>${benefit}</strong>
-    <a href="${whatsappUrl(`Hola CRIDALVID, quiero cotizar: ${name}.`)}" target="_blank" rel="noreferrer">Cotizar este servicio</a>
+    <h3>${service.name}</h3>
+    <p>${service.description}</p>
+    <strong>${service.benefit}</strong>
+    <a href="${whatsappUrl(`Hola CRIDALVID, quiero cotizar: ${service.name}.`)}" target="_blank" rel="noreferrer">Cotizar este servicio</a>
   `;
   serviceGrid.appendChild(article);
 
   const option = document.createElement("option");
-  option.value = name;
-  option.textContent = name;
+  option.value = service.name;
+  option.textContent = service.name;
   serviceSelect.appendChild(option);
 });
 
@@ -70,27 +67,64 @@ document.querySelectorAll(".js-whatsapp").forEach((link) => {
   link.rel = "noreferrer";
 });
 
+const projectGrid = document.getElementById("project-grid");
 const modal = document.getElementById("project-modal");
 const modalTitle = document.getElementById("modal-title");
+const modalMedia = document.getElementById("modal-media");
 const modalWhatsapp = document.getElementById("modal-whatsapp");
 
-document.querySelectorAll(".project-tile").forEach((tile) => {
-  tile.addEventListener("click", () => {
-    const project = tile.dataset.project;
-    modalTitle.textContent = project;
-    modalWhatsapp.href = whatsappUrl(`Hola CRIDALVID, quiero un proyecto similar a: ${project}.`);
-    modal.hidden = false;
-  });
+projects.forEach((project) => {
+  const button = document.createElement("button");
+  button.className = "project-tile";
+  button.type = "button";
+  button.dataset.project = project.title;
+  button.dataset.src = project.src;
+  button.dataset.media = project.media;
+  button.innerHTML = `
+    <span class="project-frame">
+      ${
+        project.media === "video"
+          ? `<video src="${project.src}" muted playsinline preload="metadata"></video>`
+          : `<img src="${project.src}" alt="${project.title}" loading="lazy" />`
+      }
+    </span>
+    <strong>${project.title}</strong>
+    <small>${project.type}</small>
+  `;
+  projectGrid.appendChild(button);
+});
+
+projectGrid.addEventListener("click", (event) => {
+  const tile = event.target.closest(".project-tile");
+  if (!tile) return;
+
+  const project = tile.dataset.project;
+  const src = tile.dataset.src;
+  const media = tile.dataset.media;
+  modalTitle.textContent = project;
+  modalWhatsapp.href = whatsappUrl(`Hola CRIDALVID, quiero un proyecto similar a: ${project}.`);
+  modalMedia.innerHTML =
+    media === "video"
+      ? `<video src="${src}" controls autoplay playsinline></video>`
+      : `<img src="${src}" alt="${project}" />`;
+  modal.hidden = false;
 });
 
 document.querySelector(".modal-close").addEventListener("click", () => {
   modal.hidden = true;
+  modalMedia.innerHTML = "";
 });
 modal.addEventListener("click", (event) => {
-  if (event.target === modal) modal.hidden = true;
+  if (event.target === modal) {
+    modal.hidden = true;
+    modalMedia.innerHTML = "";
+  }
 });
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") modal.hidden = true;
+  if (event.key === "Escape") {
+    modal.hidden = true;
+    modalMedia.innerHTML = "";
+  }
 });
 
 document.getElementById("quote-form").addEventListener("submit", (event) => {

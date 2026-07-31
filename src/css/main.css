@@ -87,7 +87,7 @@ nav a:hover { color: var(--accent-dark); }
   z-index: -2;
   background:
     linear-gradient(90deg, rgba(12, 17, 20, 0.82), rgba(12, 17, 20, 0.38) 54%, rgba(12, 17, 20, 0.18)),
-    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80") center/cover;
+    url("../../assets/projects/proyecto-02.jpeg") center/cover;
 }
 .hero-content { width: min(790px, 100%); }
 .eyebrow { margin: 0 0 12px; color: var(--accent); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; }
@@ -143,6 +143,25 @@ p { color: var(--muted); line-height: 1.65; }
 .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .project-tile { display: grid; gap: 12px; padding: 0 0 18px; text-align: left; background: white; border: 1px solid var(--line); cursor: pointer; }
 .project-frame { display: block; aspect-ratio: 1.32; width: 100%; }
+.project-frame img,
+.project-frame video,
+.modal-media img,
+.modal-media video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.modal-media {
+  width: 100%;
+  aspect-ratio: 1.32;
+  margin-bottom: 18px;
+  overflow: hidden;
+  background: #111619;
+}
+.modal-media video {
+  object-fit: contain;
+}
 .project-tile strong, .project-tile small { padding-inline: 18px; }
 .project-tile small, .note { color: var(--muted); }
 
