@@ -28,37 +28,45 @@ setText("[data-business-coverage]", business.coverage);
 
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.getElementById("site-nav");
-menuToggle.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(open));
-});
-nav.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
+if (menuToggle && nav) {
+  menuToggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(open));
   });
-});
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
 
 const serviceGrid = document.getElementById("services-grid");
 const serviceSelect = document.getElementById("service-select");
-serviceSelect.innerHTML = '<option value="">Selecciona una opcion</option>';
+if (serviceSelect) {
+  serviceSelect.innerHTML = '<option value="">Selecciona una opcion</option>';
+}
 
 services.forEach((service, index) => {
-  const article = document.createElement("article");
-  article.className = "service-card";
-  article.innerHTML = `
-    <div class="service-visual visual-${(index % 4) + 1}" aria-hidden="true"></div>
-    <h3>${service.name}</h3>
-    <p>${service.description}</p>
-    <strong>${service.benefit}</strong>
-    <a href="${whatsappUrl(`Hola CRIDALVID, quiero cotizar: ${service.name}.`)}" target="_blank" rel="noreferrer">Cotizar este servicio</a>
-  `;
-  serviceGrid.appendChild(article);
+  if (serviceGrid) {
+    const article = document.createElement("article");
+    article.className = "service-card";
+    article.innerHTML = `
+      <div class="service-visual visual-${(index % 4) + 1}" aria-hidden="true"></div>
+      <h3>${service.name}</h3>
+      <p>${service.description}</p>
+      <strong>${service.benefit}</strong>
+      <a href="${whatsappUrl(`Hola CRIDALVID, quiero cotizar: ${service.name}.`)}" target="_blank" rel="noreferrer">Cotizar este servicio</a>
+    `;
+    serviceGrid.appendChild(article);
+  }
 
-  const option = document.createElement("option");
-  option.value = service.name;
-  option.textContent = service.name;
-  serviceSelect.appendChild(option);
+  if (serviceSelect) {
+    const option = document.createElement("option");
+    option.value = service.name;
+    option.textContent = service.name;
+    serviceSelect.appendChild(option);
+  }
 });
 
 document.querySelectorAll(".js-whatsapp").forEach((link) => {
@@ -73,61 +81,65 @@ const modalTitle = document.getElementById("modal-title");
 const modalMedia = document.getElementById("modal-media");
 const modalWhatsapp = document.getElementById("modal-whatsapp");
 
-projects.forEach((project) => {
-  const button = document.createElement("button");
-  button.className = "project-tile";
-  button.type = "button";
-  button.dataset.project = project.title;
-  button.dataset.src = project.src;
-  button.dataset.media = project.media;
-  button.innerHTML = `
-    <span class="project-frame">
-      ${
-        project.media === "video"
-          ? `<video src="${project.src}" muted playsinline preload="metadata"></video>`
-          : `<img src="${project.src}" alt="${project.title}" loading="lazy" />`
-      }
-    </span>
-    <strong>${project.title}</strong>
-    <small>${project.type}</small>
-  `;
-  projectGrid.appendChild(button);
-});
+if (projectGrid) {
+  projects.forEach((project) => {
+    const button = document.createElement("button");
+    button.className = "project-tile";
+    button.type = "button";
+    button.dataset.project = project.title;
+    button.dataset.src = project.src;
+    button.dataset.media = project.media;
+    button.innerHTML = `
+      <span class="project-frame">
+        ${
+          project.media === "video"
+            ? `<video src="${project.src}" muted playsinline preload="metadata"></video>`
+            : `<img src="${project.src}" alt="${project.title}" loading="lazy" />`
+        }
+      </span>
+      <strong>${project.title}</strong>
+      <small>${project.type}</small>
+    `;
+    projectGrid.appendChild(button);
+  });
 
-projectGrid.addEventListener("click", (event) => {
-  const tile = event.target.closest(".project-tile");
-  if (!tile) return;
+  projectGrid.addEventListener("click", (event) => {
+    const tile = event.target.closest(".project-tile");
+    if (!tile || !modal) return;
 
-  const project = tile.dataset.project;
-  const src = tile.dataset.src;
-  const media = tile.dataset.media;
-  modalTitle.textContent = project;
-  modalWhatsapp.href = whatsappUrl(`Hola CRIDALVID, quiero un proyecto similar a: ${project}.`);
-  modalMedia.innerHTML =
-    media === "video"
-      ? `<video src="${src}" controls autoplay playsinline></video>`
-      : `<img src="${src}" alt="${project}" />`;
-  modal.hidden = false;
-});
+    const project = tile.dataset.project;
+    const src = tile.dataset.src;
+    const media = tile.dataset.media;
+    modalTitle.textContent = project;
+    modalWhatsapp.href = whatsappUrl(`Hola CRIDALVID, quiero un proyecto similar a: ${project}.`);
+    modalMedia.innerHTML =
+      media === "video"
+        ? `<video src="${src}" controls autoplay playsinline></video>`
+        : `<img src="${src}" alt="${project}" />`;
+    modal.hidden = false;
+  });
+}
 
-document.querySelector(".modal-close").addEventListener("click", () => {
-  modal.hidden = true;
-  modalMedia.innerHTML = "";
+document.querySelector(".modal-close")?.addEventListener("click", () => {
+  if (modal) {
+    modal.hidden = true;
+    modalMedia.innerHTML = "";
+  }
 });
-modal.addEventListener("click", (event) => {
+modal?.addEventListener("click", (event) => {
   if (event.target === modal) {
     modal.hidden = true;
     modalMedia.innerHTML = "";
   }
 });
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
+  if (event.key === "Escape" && modal) {
     modal.hidden = true;
     modalMedia.innerHTML = "";
   }
 });
 
-document.getElementById("quote-form").addEventListener("submit", (event) => {
+document.getElementById("quote-form")?.addEventListener("submit", (event) => {
   event.preventDefault();
   const form = new FormData(event.currentTarget);
   const status = document.getElementById("quote-status");
@@ -157,7 +169,7 @@ document.getElementById("quote-form").addEventListener("submit", (event) => {
   window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
 });
 
-document.getElementById("career-form").addEventListener("submit", (event) => {
+document.getElementById("career-form")?.addEventListener("submit", (event) => {
   event.preventDefault();
   const form = new FormData(event.currentTarget);
   const status = document.getElementById("career-status");

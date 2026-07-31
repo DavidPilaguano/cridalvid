@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proyectos | CRIDALVID</title>
+    <meta name="description" content="Galeria de proyectos reales de aluminio y vidrio de CRIDALVID." />
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="src/css/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span><span><strong>CRIDALVID</strong><small>Aluminio y vidrio</small></span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+      <nav id="site-nav"><a href="servicios.html">Servicios</a><a href="proyectos.html">Proyectos</a><a href="nosotros.html">Nosotros</a><a href="trabaja.html">Trabaja</a><a class="nav-cta" href="contacto.html">Cotizar</a></nav>
+    </header>
+    <main>
+      <section class="page-hero compact-hero">
+        <p class="eyebrow">Proyectos</p>
+        <h1>Galeria con fotos y video reales</h1>
+        <p>Una pagina dedicada para mirar trabajos, abrir cada pieza en grande y pedir un proyecto similar.</p>
+      </section>
+      <section class="section">
+        <div class="project-grid gallery-page" id="project-grid"></div>
+      </section>
+    </main>
+    <div class="modal" id="project-modal" hidden>
+      <div class="modal-content" role="dialog" aria-modal="true">
+        <button class="modal-close" type="button" aria-label="Cerrar">x</button>
+        <div class="modal-media" id="modal-media"></div>
+        <h3 id="modal-title">Proyecto</h3>
+        <p>Proyecto real de CRIDALVID. Puedes usar esta referencia para solicitar una cotizacion similar.</p>
+        <a class="button primary" id="modal-whatsapp" href="#">Quiero un proyecto similar</a>
+      </div>
+    </div>
+    <footer class="footer">
+      <div><strong>CRIDALVID</strong><p>Trabajos a medida en aluminio y vidrio.</p></div>
+      <div><a href="index.html">Inicio</a><a href="servicios.html">Servicios</a><a href="contacto.html">Cotizacion</a></div>
+      <div><a href="nosotros.html">Nosotros</a><a href="trabaja.html">Trabaja</a></div>
+      <small>Copyright <span id="year"></span> CRIDALVID.</small>
+    </footer>
+    <a class="floating-whatsapp js-whatsapp" href="#">WA</a>
+    <script src="src/js/config.js"></script><script src="src/js/data.js"></script><script src="src/js/main.js"></script>
+  </body>
+</html>

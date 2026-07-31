@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto y cotizacion | CRIDALVID</title>
+    <meta name="description" content="Contacta y solicita una cotizacion a CRIDALVID por WhatsApp." />
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="src/css/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span><span><strong>CRIDALVID</strong><small>Aluminio y vidrio</small></span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+      <nav id="site-nav"><a href="servicios.html">Servicios</a><a href="proyectos.html">Proyectos</a><a href="nosotros.html">Nosotros</a><a href="trabaja.html">Trabaja</a><a class="nav-cta" href="contacto.html">Cotizar</a></nav>
+    </header>
+    <main>
+      <section class="page-hero compact-hero"><p class="eyebrow">Contacto</p><h1>Cotiza tu proyecto con datos claros</h1><p>El formulario genera un mensaje ordenado para WhatsApp, sin backend ni almacenamiento de datos.</p></section>
+      <section class="section contact band">
+        <div>
+          <p class="eyebrow">Datos</p>
+          <h2>Estamos listos para revisar tu proyecto</h2>
+          <dl>
+            <div><dt>Direccion</dt><dd data-business-address>[CIUDAD Y DIRECCION]</dd></div>
+            <div><dt>Horario</dt><dd data-business-schedule>[HORARIO]</dd></div>
+            <div><dt>Telefono</dt><dd data-business-phone>[NUMERO]</dd></div>
+            <div><dt>WhatsApp</dt><dd data-business-phone>[NUMERO]</dd></div>
+            <div><dt>Correo</dt><dd data-business-email>[CORREO]</dd></div>
+            <div><dt>Cobertura</dt><dd data-business-coverage>[ZONAS]</dd></div>
+          </dl>
+          <div class="contact-actions"><a class="button primary js-whatsapp" href="#">Escribir por WhatsApp</a><a class="button secondary" href="#cotizacion">Ir al formulario</a></div>
+        </div>
+        <div class="map-placeholder"><strong>Mapa pendiente</strong><p>Agrega una direccion real para activar mapa y boton Como llegar.</p></div>
+      </section>
+      <section id="cotizacion" class="section quote">
+        <div class="section-head"><p class="eyebrow">Cotizacion</p><h2>Cuentanos que necesitas</h2><p>Completa los campos y el sitio abrira WhatsApp con el mensaje listo.</p></div>
+        <form class="form quote-form" id="quote-form">
+          <label><span>Nombre</span><input name="name" required /></label>
+          <label><span>Telefono</span><input name="phone" type="tel" required /></label>
+          <label><span>Servicio requerido</span><select name="service" id="service-select" required></select></label>
+          <label><span>Medidas aproximadas</span><input name="measurements" /></label>
+          <label><span>Ubicacion del proyecto</span><input name="location" required /></label>
+          <label><span>Descripcion</span><textarea name="description" rows="4" required></textarea></label>
+          <label class="checkbox"><input type="checkbox" name="consent" required /><span>Acepto ser contactado por CRIDALVID para responder mi solicitud.</span></label>
+          <p class="note">Puedes enviar fotografias directamente en WhatsApp.</p>
+          <button class="button primary" type="submit">Continuar por WhatsApp</button>
+          <p class="form-status" id="quote-status"></p>
+        </form>
+      </section>
+      <section id="privacidad" class="section privacy"><div class="section-head"><p class="eyebrow">Privacidad</p><h2>Uso de datos de contacto</h2><p>Esta pagina no guarda formularios en una base de datos. Los datos ingresados solo preparan un mensaje que el visitante decide enviar por WhatsApp.</p></div></section>
+    </main>
+    <footer class="footer"><div><strong>CRIDALVID</strong><p>Contacto y cotizacion.</p></div><div><a href="index.html">Inicio</a><a href="servicios.html">Servicios</a><a href="proyectos.html">Proyectos</a></div><div><a href="nosotros.html">Nosotros</a><a href="trabaja.html">Trabaja</a></div><small>Copyright <span id="year"></span> CRIDALVID.</small></footer>
+    <a class="floating-whatsapp js-whatsapp" href="#">WA</a>
+    <script src="src/js/config.js"></script><script src="src/js/data.js"></script><script src="src/js/main.js"></script>
+  </body>
+</html>

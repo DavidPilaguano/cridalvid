@@ -1,10 +1,15 @@
 # CRIDALVID Landing
 
-Landing page estatica completa para CRIDALVID, lista para subir a GitHub y desplegar en Vercel.
+Sitio estatico multipagina para CRIDALVID, listo para subir a GitHub y desplegar en Vercel.
 
 ## Archivos principales
 
-- `index.html`: estructura completa de la pagina.
+- `index.html`: portada principal.
+- `servicios.html`: pagina de servicios.
+- `proyectos.html`: galeria de fotos y video.
+- `nosotros.html`: informacion del negocio.
+- `trabaja.html`: postulaciones.
+- `contacto.html`: contacto, cotizacion y privacidad.
 - `src/css/main.css`: diseno visual responsive.
 - `src/js/config.js`: datos editables del negocio.
 - `src/js/data.js`: servicios y galeria de proyectos.
@@ -39,6 +44,11 @@ Sube todo el contenido de esta carpeta como raiz del repositorio:
 
 ```text
 index.html
+servicios.html
+proyectos.html
+nosotros.html
+trabaja.html
+contacto.html
 src/
 assets/
 vercel.json
@@ -87,7 +97,7 @@ whatsapp: "593987654321"
 
 ## Funcionalidades incluidas
 
-- Navegacion por secciones.
+- Navegacion multipagina.
 - Menu movil accesible.
 - Hero comercial.
 - Servicios generados desde JavaScript.

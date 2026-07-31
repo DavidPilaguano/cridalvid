@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trabaja con nosotros | CRIDALVID</title>
+    <meta name="description" content="Postula para trabajar con CRIDALVID en aluminio y vidrio." />
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="src/css/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span><span><strong>CRIDALVID</strong><small>Aluminio y vidrio</small></span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+      <nav id="site-nav"><a href="servicios.html">Servicios</a><a href="proyectos.html">Proyectos</a><a href="nosotros.html">Nosotros</a><a href="trabaja.html">Trabaja</a><a class="nav-cta" href="contacto.html">Cotizar</a></nav>
+    </header>
+    <main>
+      <section class="page-hero compact-hero"><p class="eyebrow">Trabaja con nosotros</p><h1>Postulaciones simples por WhatsApp</h1><p>Una pagina separada para candidatos, sin mezclar postulaciones con cotizaciones de clientes.</p></section>
+      <section class="section careers">
+        <div class="career-copy">
+          <p class="eyebrow">Equipo</p>
+          <h2>Buscamos personas responsables y detallistas</h2>
+          <p>Perfiles sugeridos: instaladores, tecnicos, ayudantes, vendedores o personas con experiencia en aluminio y vidrio.</p>
+          <p class="note">El envio de curriculum requiere integracion de archivos. Por ahora la postulacion abre WhatsApp con los datos ordenados.</p>
+        </div>
+        <form class="form" id="career-form">
+          <label><span>Nombre</span><input name="name" required /></label>
+          <label><span>Telefono</span><input name="phone" type="tel" required /></label>
+          <label><span>Correo</span><input name="email" type="email" required /></label>
+          <label><span>Puesto de interes</span><input name="role" required /></label>
+          <label><span>Experiencia</span><input name="experience" required /></label>
+          <label><span>Mensaje</span><textarea name="message" rows="4"></textarea></label>
+          <button class="button primary" type="submit">Postular por WhatsApp</button>
+          <p class="form-status" id="career-status"></p>
+        </form>
+      </section>
+    </main>
+    <footer class="footer"><div><strong>CRIDALVID</strong><p>Postulaciones por WhatsApp.</p></div><div><a href="index.html">Inicio</a><a href="servicios.html">Servicios</a><a href="proyectos.html">Proyectos</a></div><div><a href="contacto.html">Contacto</a><a href="nosotros.html">Nosotros</a></div><small>Copyright <span id="year"></span> CRIDALVID.</small></footer>
+    <script src="src/js/config.js"></script><script src="src/js/data.js"></script><script src="src/js/main.js"></script>
+  </body>
+</html>
