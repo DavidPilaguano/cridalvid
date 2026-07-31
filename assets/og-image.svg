@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#121619"/>
+      <stop offset="1" stop-color="#087b7d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect x="76" y="72" width="1048" height="486" fill="none" stroke="#d9e0e3" stroke-width="3" opacity=".55"/>
+  <path d="M142 150h320v252H142zM462 150v252M142 276h320M736 118v394M880 118v394M1024 118v394" stroke="#f6f8f8" stroke-width="5" opacity=".36" fill="none"/>
+  <text x="96" y="472" font-family="Arial, sans-serif" font-size="92" font-weight="800" fill="#ffffff">CRIDALVID</text>
+  <text x="100" y="530" font-family="Arial, sans-serif" font-size="34" fill="#d9e0e3">Soluciones en aluminio y vidrio a medida</text>
+</svg>

@@ -1,0 +1,16 @@
+{
+  "name": "CRIDALVID",
+  "short_name": "CRIDALVID",
+  "description": "Soluciones en aluminio y vidrio a medida.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f8f8",
+  "theme_color": "#087b7d",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

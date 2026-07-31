@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 92" role="img" aria-label="CRIDALVID">
+  <rect x="2" y="2" width="88" height="88" fill="#20272c" stroke="#1aa6a8" stroke-width="4"/>
+  <path d="M46 8v76M8 46h76" stroke="#f6f8f8" stroke-width="3" opacity=".8"/>
+  <text x="46" y="59" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f6f8f8">C</text>
+  <text x="114" y="43" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#20272c">CRIDALVID</text>
+  <text x="116" y="68" font-family="Arial, sans-serif" font-size="16" fill="#5f6b73">Aluminio y vidrio a medida</text>
+</svg>
