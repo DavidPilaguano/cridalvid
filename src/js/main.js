@@ -34,6 +34,7 @@ function setSocialLink(selector, url, label) {
       link.classList.add("is-disabled");
       link.setAttribute("aria-label", `${label} proximo a publicar`);
       link.setAttribute("title", `${label} proximo a publicar`);
+      link.addEventListener("click", (event) => event.preventDefault());
       return;
     }
     link.href = url;
