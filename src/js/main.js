@@ -21,10 +21,30 @@ function setText(selector, value) {
 document.getElementById("year").textContent = new Date().getFullYear();
 setText("[data-business-city]", business.city);
 setText("[data-business-address]", business.address);
-setText("[data-business-phone]", business.whatsapp);
+setText("[data-business-phone]", business.phonePrimary || business.whatsapp);
+setText("[data-business-phone-secondary]", business.phoneSecondary);
 setText("[data-business-email]", business.email);
 setText("[data-business-schedule]", business.schedule);
 setText("[data-business-coverage]", business.coverage);
+
+function setSocialLink(selector, url, label) {
+  document.querySelectorAll(selector).forEach((link) => {
+    if (isPlaceholder(url) || !url) {
+      link.href = "#";
+      link.classList.add("is-disabled");
+      link.setAttribute("aria-label", `${label} proximo a publicar`);
+      link.setAttribute("title", `${label} proximo a publicar`);
+      return;
+    }
+    link.href = url;
+  });
+}
+
+setSocialLink(".js-instagram", business.instagram, "Instagram");
+setSocialLink(".js-facebook", business.facebook, "Facebook");
+document.querySelectorAll(".js-directions").forEach((link) => {
+  link.href = business.directionsUrl;
+});
 
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.getElementById("site-nav");

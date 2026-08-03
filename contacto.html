@@ -23,14 +23,22 @@
           <dl>
             <div><dt>Direccion</dt><dd data-business-address>[CIUDAD Y DIRECCION]</dd></div>
             <div><dt>Horario</dt><dd data-business-schedule>[HORARIO]</dd></div>
-            <div><dt>Telefono</dt><dd data-business-phone>[NUMERO]</dd></div>
+            <div><dt>Telefono principal</dt><dd data-business-phone>[NUMERO]</dd></div>
+            <div><dt>Telefono secundario</dt><dd data-business-phone-secondary>[NUMERO]</dd></div>
             <div><dt>WhatsApp</dt><dd data-business-phone>[NUMERO]</dd></div>
             <div><dt>Correo</dt><dd data-business-email>[CORREO]</dd></div>
             <div><dt>Cobertura</dt><dd data-business-coverage>[ZONAS]</dd></div>
           </dl>
-          <div class="contact-actions"><a class="button primary js-whatsapp" href="#">Escribir por WhatsApp</a><a class="button secondary" href="#cotizacion">Ir al formulario</a></div>
+          <div class="contact-actions"><a class="button primary js-whatsapp" href="#"><span class="social-icon social-whatsapp">W</span>Escribir por WhatsApp</a><a class="button secondary" href="#cotizacion">Ir al formulario</a></div>
         </div>
-        <div class="map-placeholder"><strong>Mapa pendiente</strong><p>Agrega una direccion real para activar mapa y boton Como llegar.</p></div>
+        <div class="map-placeholder location-card">
+          <strong>Ubicacion fisica del local</strong>
+          <p data-business-address>[CIUDAD Y DIRECCION]</p>
+          <p>Ubicacion tomada de la referencia de Google Maps. El boton abre la ruta para llegar al local.</p>
+          <div class="location-actions">
+            <a class="button secondary js-directions" href="[ENLACE_GOOGLE_MAPS]" target="_blank" rel="noreferrer">Como llegar</a>
+          </div>
+        </div>
       </section>
       <section id="cotizacion" class="section quote">
         <div class="section-head"><p class="eyebrow">Cotizacion</p><h2>Cuentanos que necesitas</h2><p>Completa los campos y el sitio abrira WhatsApp con el mensaje listo.</p></div>
@@ -49,8 +57,8 @@
       </section>
       <section id="privacidad" class="section privacy"><div class="section-head"><p class="eyebrow">Privacidad</p><h2>Uso de datos de contacto</h2><p>Esta pagina no guarda formularios en una base de datos. Los datos ingresados solo preparan un mensaje que el visitante decide enviar por WhatsApp.</p></div></section>
     </main>
-    <footer class="footer"><div><strong>CRIDALVID</strong><p>Contacto y cotizacion.</p></div><div><a href="index.html">Inicio</a><a href="servicios.html">Servicios</a><a href="proyectos.html">Proyectos</a></div><div><a href="nosotros.html">Nosotros</a><a href="trabaja.html">Trabaja</a></div><small>Copyright <span id="year"></span> CRIDALVID.</small></footer>
-    <a class="floating-whatsapp js-whatsapp" href="#">WA</a>
+    <footer class="footer"><div><strong>CRIDALVID</strong><p>Contacto y cotizacion.</p></div><div><a href="index.html">Inicio</a><a href="servicios.html">Servicios</a><a href="proyectos.html">Proyectos</a></div><div class="social-links"><a class="social-link js-instagram" href="[ENLACE]" target="_blank" rel="noreferrer"><span class="social-icon social-instagram">IG</span>Instagram</a><a class="social-link js-facebook" href="[ENLACE]" target="_blank" rel="noreferrer"><span class="social-icon social-facebook">f</span>Facebook</a></div><small>Copyright <span id="year"></span> CRIDALVID.</small></footer>
+    <a class="floating-whatsapp js-whatsapp" href="#" aria-label="Cotizar por WhatsApp"><span class="social-icon social-whatsapp">W</span></a>
     <script src="src/js/config.js"></script><script src="src/js/data.js"></script><script src="src/js/main.js"></script>
   </body>
 </html>
