@@ -13,6 +13,7 @@ function isPlaceholder(value) {
 }
 
 function setText(selector, value) {
+  if (isPlaceholder(value)) return;
   document.querySelectorAll(selector).forEach((node) => {
     node.textContent = value;
   });
@@ -32,8 +33,8 @@ function setSocialLink(selector, url, label) {
     if (isPlaceholder(url) || !url) {
       link.href = "#";
       link.classList.add("is-disabled");
-      link.setAttribute("aria-label", `${label} proximo a publicar`);
-      link.setAttribute("title", `${label} proximo a publicar`);
+      link.setAttribute("aria-label", `${label} próximo a publicar`);
+      link.setAttribute("title", `${label} próximo a publicar`);
       link.addEventListener("click", (event) => event.preventDefault());
       return;
     }
@@ -73,7 +74,7 @@ services.forEach((service, index) => {
     const article = document.createElement("article");
     article.className = "service-card";
     article.innerHTML = `
-      <div class="service-visual visual-${(index % 4) + 1}" aria-hidden="true"></div>
+      <div class="service-visual" aria-hidden="true"><span class="service-icon">${service.icon || "◫"}</span></div>
       <h3>${service.name}</h3>
       <p>${service.description}</p>
       <strong>${service.benefit}</strong>
@@ -91,7 +92,7 @@ services.forEach((service, index) => {
 });
 
 document.querySelectorAll(".js-whatsapp").forEach((link) => {
-  link.href = whatsappUrl("Hola CRIDALVID, quiero solicitar una cotizacion para un trabajo de aluminio y vidrio.");
+  link.href = whatsappUrl("Hola CRIDALVID, quiero solicitar una cotización para un trabajo de aluminio y vidrio.");
   link.target = "_blank";
   link.rel = "noreferrer";
 });
@@ -197,21 +198,21 @@ document.getElementById("quote-form")?.addEventListener("submit", (event) => {
 
   const phone = String(form.get("phone") || "").trim();
   if (phone.length < 7) {
-    status.textContent = "Revisa el telefono. Debe tener al menos 7 digitos.";
+    status.textContent = "Revisa el teléfono. Debe tener al menos 7 dígitos.";
     return;
   }
 
   const message = [
-    "Hola CRIDALVID, quiero solicitar una cotizacion.",
+    "Hola CRIDALVID, quiero solicitar una cotización.",
     `Nombre: ${form.get("name")}`,
-    `Telefono: ${form.get("phone")}`,
+    `Teléfono: ${form.get("phone")}`,
     `Servicio: ${form.get("service")}`,
     `Medidas aproximadas: ${form.get("measurements") || "Por definir"}`,
-    `Ubicacion del proyecto: ${form.get("location")}`,
-    `Descripcion: ${form.get("description")}`
+    `Ubicación del proyecto: ${form.get("location")}`,
+    `Descripción: ${form.get("description")}`
   ].join("\n");
 
-  status.textContent = "Listo. Se abrira WhatsApp con tu solicitud ordenada.";
+  status.textContent = "Listo. Se abrirá WhatsApp con tu solicitud ordenada.";
   window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
 });
 
@@ -222,21 +223,21 @@ document.getElementById("career-form")?.addEventListener("submit", (event) => {
   const phone = String(form.get("phone") || "").trim();
 
   if (phone.length < 7) {
-    status.textContent = "Revisa el telefono para que podamos contactarte.";
+    status.textContent = "Revisa el teléfono para que podamos contactarte.";
     return;
   }
 
   const message = [
     "Hola CRIDALVID, quiero postular para trabajar con ustedes.",
     `Nombre: ${form.get("name")}`,
-    `Telefono: ${form.get("phone")}`,
+    `Teléfono: ${form.get("phone")}`,
     `Correo: ${form.get("email")}`,
     `Puesto: ${form.get("role")}`,
     `Experiencia: ${form.get("experience")}`,
     `Mensaje: ${form.get("message") || "Sin mensaje adicional"}`
   ].join("\n");
 
-  status.textContent = "Perfecto. Se abrira WhatsApp con tu postulacion.";
+  status.textContent = "Perfecto. Se abrirá WhatsApp con tu postulación.";
   window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
 });
 
