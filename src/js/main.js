@@ -76,13 +76,21 @@ document.querySelectorAll(".js-whatsapp").forEach((link) => {
 });
 
 const projectGrid = document.getElementById("project-grid");
+const projectFilters = document.getElementById("project-filters");
 const modal = document.getElementById("project-modal");
 const modalTitle = document.getElementById("modal-title");
 const modalMedia = document.getElementById("modal-media");
 const modalWhatsapp = document.getElementById("modal-whatsapp");
 
-if (projectGrid) {
-  projects.forEach((project) => {
+function renderProjects(filter = "todos") {
+  if (!projectGrid) return;
+  const limit = Number(projectGrid.dataset.limit || 0);
+  const visibleProjects = projects
+    .filter((project) => filter === "todos" || project.category === filter)
+    .slice(0, limit || projects.length);
+
+  projectGrid.innerHTML = "";
+  visibleProjects.forEach((project) => {
     const button = document.createElement("button");
     button.className = "project-tile";
     button.type = "button";
@@ -102,7 +110,10 @@ if (projectGrid) {
     `;
     projectGrid.appendChild(button);
   });
+}
 
+if (projectGrid) {
+  renderProjects();
   projectGrid.addEventListener("click", (event) => {
     const tile = event.target.closest(".project-tile");
     if (!tile || !modal) return;
@@ -117,6 +128,20 @@ if (projectGrid) {
         ? `<video src="${src}" controls autoplay playsinline></video>`
         : `<img src="${src}" alt="${project}" />`;
     modal.hidden = false;
+  });
+}
+
+if (projectFilters) {
+  projectFilters.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-filter]");
+    if (!button) return;
+    projectFilters.querySelectorAll("[data-filter]").forEach((filterButton) => {
+      filterButton.classList.remove("active");
+      filterButton.setAttribute("aria-pressed", "false");
+    });
+    button.classList.add("active");
+    button.setAttribute("aria-pressed", "true");
+    renderProjects(button.dataset.filter);
   });
 }
 

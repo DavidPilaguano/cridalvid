@@ -18,9 +18,17 @@
       <section class="page-hero compact-hero">
         <p class="eyebrow">Proyectos</p>
         <h1>Galeria con fotos y video reales</h1>
-        <p>Una pagina dedicada para mirar trabajos, abrir cada pieza en grande y pedir un proyecto similar.</p>
+        <p>Una pagina dedicada para mirar trabajos, filtrar por tipo, abrir cada pieza en grande y pedir un proyecto similar.</p>
       </section>
       <section class="section">
+        <div class="gallery-toolbar" id="project-filters" aria-label="Filtros de proyectos">
+          <button class="active" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+          <button type="button" data-filter="ventanas" aria-pressed="false">Ventanas</button>
+          <button type="button" data-filter="puertas" aria-pressed="false">Puertas</button>
+          <button type="button" data-filter="divisiones" aria-pressed="false">Divisiones</button>
+          <button type="button" data-filter="vidrio" aria-pressed="false">Vidrio</button>
+          <button type="button" data-filter="comercial" aria-pressed="false">Comercial</button>
+        </div>
         <div class="project-grid gallery-page" id="project-grid"></div>
       </section>
     </main>

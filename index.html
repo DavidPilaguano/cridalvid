@@ -63,6 +63,18 @@
         </div>
       </section>
 
+      <section class="section home-gallery">
+        <div class="section-head">
+          <p class="eyebrow">Trabajos reales</p>
+          <h2>Una muestra rapida antes de cotizar</h2>
+          <p>Fotos reales organizadas con nombres limpios dentro del proyecto, listas para mostrarse en telefono y escritorio.</p>
+        </div>
+        <div class="project-grid compact-gallery" id="project-grid" data-limit="6"></div>
+        <div class="center-action">
+          <a class="button secondary" href="proyectos.html">Ver galeria completa</a>
+        </div>
+      </section>
+
       <section class="section band split-cta">
         <div>
           <p class="eyebrow">Cotiza sin vueltas</p>
@@ -81,6 +93,15 @@
     </footer>
 
     <a class="floating-whatsapp js-whatsapp" href="#" aria-label="Cotizar por WhatsApp">WA</a>
+    <div class="modal" id="project-modal" hidden>
+      <div class="modal-content" role="dialog" aria-modal="true">
+        <button class="modal-close" type="button" aria-label="Cerrar">x</button>
+        <div class="modal-media" id="modal-media"></div>
+        <h3 id="modal-title">Proyecto</h3>
+        <p>Referencia real de CRIDALVID para solicitar una cotizacion similar.</p>
+        <a class="button primary" id="modal-whatsapp" href="#">Quiero un proyecto similar</a>
+      </div>
+    </div>
     <script src="src/js/config.js"></script>
     <script src="src/js/data.js"></script>
     <script src="src/js/main.js"></script>
